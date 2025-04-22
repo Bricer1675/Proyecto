@@ -3,9 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi ecomerweb</title>
+    <title>Mi Tienda</title>
+  
+    <!-- Bootstrap y Font Awesome desde tu carpeta local -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/css/custom.css"> <!-- Si tienes estilos propios -->
 </head>
 <body>
-    
+    <!-- =================== INICIO ENCABEZADO =================== -->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <!-- Logo o nombre de tienda -->
+        <a class="navbar-brand" href="#">
+          <i class="fas fa-store"></i> MiTienda
+        </a>
+  
+        <!-- Botón responsive -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <!-- Menú principal -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Productos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="mailto:correo@ejemplo.com">
+                <i class="fas fa-envelope"></i> Correo
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+    <!-- =================== INICIO FOOTER =================== -->
+<footer class="bg-dark text-light text-center py-4 mt-5">
+    <div class="container">
+      <p class="mb-1">&copy; 2025 MiTienda. Todos los derechos reservados.</p>
+      <div>
+        <a href="#" class="text-light me-3"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="text-light me-3"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </footer>
+  <!-- =================== FIN FOOTER =================== -->
 </body>
 </html>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
