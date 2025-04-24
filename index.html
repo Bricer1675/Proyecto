@@ -8,23 +8,10 @@
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Mi Tienda</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Productos</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Nosotros</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  
+  <!-- NAVBAR CARGADO DINÁMICAMENTE -->
+<div id="navbar"></div>
+
 
   <!-- CARRUSEL -->
   <div id="carouselExampleIndicators" class="carousel slide mb-5" data-bs-ride="carousel" style="max-height: 400px; overflow: hidden;">
@@ -86,7 +73,15 @@
       .then(data => {
         document.getElementById('footer').innerHTML = data;
       });
+  
+    // Cargar el navbar
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      });
   </script>
+  
   
 </body>
 </html>
