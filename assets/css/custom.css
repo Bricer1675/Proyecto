@@ -3,7 +3,45 @@ Custom Css
 */
 /* 🔧 Corrección visual para el carrusel de Bootstrap */
 
-.carousel-item {
+/* ✨ ProdArt v1.0 - Estilos personalizados ✨ */
+
+/* --- RESETEO SUAVE --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* --- NAVBAR --- */
+  .navbar-brand {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+  }
+  
+  .navbar-nav .nav-link {
+    margin-left: 15px;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #28a745;
+  }
+  
+  /* --- BOTONES --- */
+  .btn-success {
+    background-color: #28a745;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-success:hover {
+    background-color: #218838;
+  }
+  
+  /* --- CARRUSEL --- */
+  .carousel-item {
     background: none !important;
   }
   
@@ -19,5 +57,59 @@ Custom Css
     background-color: #000 !important;
     border-radius: 50%;
     padding: 10px;
+  }
+  
+  /* --- CATEGORÍAS DEL MES --- */
+  section h2 {
+    color: #1c7c42;
+  }
+  
+  section p {
+    color: #555;
+    font-size: 1rem;
+  }
+  
+  .rounded-circle {
+    border: 4px solid #28a745;
+    transition: transform 0.3s ease;
+  }
+  
+  .rounded-circle:hover {
+    transform: scale(1.05);
+  }
+  
+  /* --- FOOTER --- */
+  footer {
+    background-color: #222;
+    color: #fff;
+    font-size: 0.9rem;
+  }
+  
+  footer h5 {
+    color: #28a745;
+  }
+  
+  footer a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  footer a:hover {
+    color: #28a745;
+  }
+  
+  footer .form-control {
+    border-radius: 0;
+  }
+  
+  footer .btn-success {
+    border-radius: 0;
+    font-size: 0.9rem;
+  }
+  
+  /* --- TRANSICIONES GLOBALES --- */
+  a, button {
+    transition: all 0.3s ease;
   }
   
