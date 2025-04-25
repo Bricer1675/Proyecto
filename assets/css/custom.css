@@ -131,3 +131,16 @@ body {
 .btn-carrito-flotante:hover {
   background-color: #218838;
 }
+/* Animación rebote carrito */
+@keyframes rebote {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.rebote {
+  animation: rebote 0.6s;
+}
