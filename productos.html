@@ -42,16 +42,17 @@
           <li class="nav-item"><a class="nav-link" href="compras.html">Compras</a></li>
           <li class="nav-item"><a class="nav-link active" href="productos.html">Productos</a></li>
           <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          <li class="nav-item"><a class="nav-link" href="carrito.html">🛒 Ver Carrito</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- 🛒 Productos -->
+  <!-- 🛍️ Catálogo de productos -->
   <main class="container my-5">
     <h1 class="text-center text-success mb-4">Nuestros Productos</h1>
     <div class="row g-4">
-      
+
       <!-- Producto 1 -->
       <div class="col-md-4">
         <div class="card h-100 shadow-sm">
@@ -60,7 +61,9 @@
             <h5 class="card-title">Sombrero Vueltiao</h5>
             <p class="card-text">Sombrero típico colombiano tejido a mano.</p>
             <p class="text-success fw-bold">$60.000 COP</p>
-            <a href="#" class="btn btn-success w-100"><i class="fas fa-cart-plus me-2"></i>Agregar al carrito</a>
+            <button class="btn btn-success w-100" onclick="agregarAlCarrito('Sombrero Vueltiao', 60000)">
+              <i class="fas fa-cart-plus me-2"></i>Agregar al carrito
+            </button>
           </div>
         </div>
       </div>
@@ -73,7 +76,9 @@
             <h5 class="card-title">Hamaca Caribeña</h5>
             <p class="card-text">Hamaca tejida en algodón con colores vivos.</p>
             <p class="text-success fw-bold">$120.000 COP</p>
-            <a href="#" class="btn btn-success w-100"><i class="fas fa-cart-plus me-2"></i>Agregar al carrito</a>
+            <button class="btn btn-success w-100" onclick="agregarAlCarrito('Hamaca Caribeña', 120000)">
+              <i class="fas fa-cart-plus me-2"></i>Agregar al carrito
+            </button>
           </div>
         </div>
       </div>
@@ -86,7 +91,9 @@
             <h5 class="card-title">Collar Étnico</h5>
             <p class="card-text">Accesorio hecho con semillas naturales y fibras.</p>
             <p class="text-success fw-bold">$35.000 COP</p>
-            <a href="#" class="btn btn-success w-100"><i class="fas fa-cart-plus me-2"></i>Agregar al carrito</a>
+            <button class="btn btn-success w-100" onclick="agregarAlCarrito('Collar Étnico', 35000)">
+              <i class="fas fa-cart-plus me-2"></i>Agregar al carrito
+            </button>
           </div>
         </div>
       </div>
@@ -96,54 +103,20 @@
 
   <!-- 📍 Footer -->
   <footer class="bg-dark text-white pt-5 pb-4 mt-5">
-    <div class="container text-md-start">
-      <div class="row">
-        <div class="col-md-4 mb-4">
-          <h5 class="text-success">ProdArt</h5>
-          <hr class="bg-white" />
-          <p><i class="fas fa-map-marker-alt me-2"></i> Local principal - Bogotá - Colombia</p>
-          <p><i class="fas fa-phone me-2"></i> 057-320-202-02-02</p>
-          <p><i class="fas fa-envelope me-2"></i> info@prodart.com</p>
-        </div>
-        <div class="col-md-4 mb-4">
-          <h5>Productos</h5>
-          <hr class="bg-white" />
-          <ul class="list-unstyled">
-            <li><a href="productos.html" class="text-white text-decoration-none">Sombreros</a></li>
-            <li><a href="productos.html" class="text-white text-decoration-none">Hamacas</a></li>
-            <li><a href="productos.html" class="text-white text-decoration-none">Platería</a></li>
-            <li><a href="productos.html" class="text-white text-decoration-none">Decoración</a></li>
-            <li><a href="productos.html" class="text-white text-decoration-none">Vasos</a></li>
-            <li><a href="productos.html" class="text-white text-decoration-none">Tapetes</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4 mb-4">
-          <h5>Más información</h5>
-          <hr class="bg-white" />
-          <ul class="list-unstyled">
-            <li><a href="index.html" class="text-white text-decoration-none">Home</a></li>
-            <li><a href="acercade.html" class="text-white text-decoration-none">A cerca de</a></li>
-            <li><a href="compras.html" class="text-white text-decoration-none">Compras</a></li>
-            <li><a href="productos.html" class="text-white text-decoration-none">Productos</a></li>
-            <li><a href="contacto.html" class="text-white text-decoration-none">Contacto</a></li>
-          </ul>
-          <form class="d-flex mt-3">
-            <input type="email" class="form-control me-2" placeholder="Email address" />
-            <button class="btn btn-success" type="submit">Suscribirse</button>
-          </form>
-        </div>
-      </div>
-      <div class="text-center mt-4">
-        <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
-        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="text-white"><i class="fab fa-whatsapp"></i></a>
-        <p class="mt-3 mb-0">&copy; 2024 - ProdArt | Diseñado por: Pablo Carr</p>
-      </div>
+    <div class="container text-center">
+      <p>&copy; 2024 ProdArt. Todos los derechos reservados.</p>
     </div>
   </footer>
 
   <!-- JS -->
   <script src="assets/Js/bootstrap.bundle.min.js"></script>
-  <script src="assets/Js/custom.js"></script>
+  <script>
+    function agregarAlCarrito(nombre, precio) {
+      let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      carrito.push({ nombre, precio });
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+      alert("Producto agregado al carrito.");
+    }
+  </script>
 </body>
 </html>
