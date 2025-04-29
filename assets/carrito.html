@@ -1,35 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Carrito - ProdArt</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito de Compras - ProdArt</title>
 
   <!-- Estilos -->
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="assets/css/fontawesome.min.css" />
-  <link rel="stylesheet" href="assets/css/custom.css" />
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/custom.css">
 </head>
 <body>
 
-  <!-- 🔹 Barra superior de contacto -->
-  <div class="bg-dark text-white py-1 small">
-    <div class="container d-flex justify-content-between">
-      <div>
-        <i class="fas fa-envelope me-2"></i> info@prodart.com
-        <span class="mx-3">|</span>
-        <i class="fas fa-phone me-2"></i> 057-320-202-02-02
-      </div>
-      <div>
-        <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- 🌐 Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+  <!-- 🌟 Navbar simple -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
     <div class="container">
       <a class="navbar-brand text-success fw-bold" href="index.html">ProdArt</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
@@ -39,80 +22,36 @@
         <ul class="navbar-nav">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="productos.html">Productos</a></li>
-          <li class="nav-item"><a class="nav-link active" href="carrito.html">Carrito</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- 🛒 Contenido del carrito -->
+  <!-- 🛒 Carrito de compras -->
   <main class="container my-5">
     <h1 class="text-center text-success mb-4">Tu Carrito</h1>
-    <div id="carrito-contenido"></div>
+
+    <div id="lista-productos" class="mb-4">
+      <!-- Aquí se cargarán los productos con JavaScript -->
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center">
+      <p class="h5"><strong>Total:</strong> <span id="total-carrito">$0</span></p>
+      <button class="btn btn-danger" onclick="vaciarCarrito()">Vaciar Carrito</button>
+    </div>
+
   </main>
 
   <!-- 📍 Footer -->
-  <footer class="bg-dark text-white pt-5 pb-4 mt-5">
+  <footer class="bg-dark text-white pt-4 pb-3 mt-5">
     <div class="container text-center">
       <p>&copy; 2024 ProdArt. Todos los derechos reservados.</p>
     </div>
   </footer>
 
-  <!-- JS de Bootstrap -->
-  <script src="assets/Js/bootstrap.bundle.min.js"></script>
-
-  <!-- Script del carrito -->
-  <script>
-    function mostrarCarrito() {
-      let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-      let contenedor = document.getElementById("carrito-contenido");
-
-      if (carrito.length === 0) {
-        contenedor.innerHTML = "<p class='text-center'>Tu carrito está vacío.</p>";
-        return;
-      }
-
-      let total = 0;
-      let html = `
-        <table class="table table-bordered">
-          <thead class="table-success">
-            <tr>
-              <th>Producto</th>
-              <th>Precio</th>
-            </tr>
-          </thead>
-          <tbody>
-      `;
-
-      carrito.forEach(item => {
-        html += `
-          <tr>
-            <td>${item.nombre}</td>
-            <td>$${item.precio.toLocaleString()} COP</td>
-          </tr>
-        `;
-        total += item.precio;
-      });
-
-      html += `
-          </tbody>
-        </table>
-        <h4 class="text-end text-success">Total: $${total.toLocaleString()} COP</h4>
-        <div class="text-end mt-3">
-          <button class="btn btn-danger" onclick="vaciarCarrito()">Vaciar carrito</button>
-        </div>
-      `;
-
-      contenedor.innerHTML = html;
-    }
-
-    function vaciarCarrito() {
-      localStorage.removeItem("carrito");
-      mostrarCarrito();
-    }
-
-    // Mostrar al cargar
-    mostrarCarrito();
-  </script>
- </body>
+  <!-- Scripts -->
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/custom.js"></script>
+</body>
 </html>
+
