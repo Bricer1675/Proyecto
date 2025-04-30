@@ -24,9 +24,19 @@ function mostrarCarrito() {
   let suma = 0;
 
   if (contenedor) {
-    contenedor.innerHTML = ""; // limpiar
-    carrito.forEach(producto => {
-      contenedor.innerHTML += `<p>${producto.nombre} - $${producto.precio}</p>`;
+    contenedor.innerHTML = ""; // Limpiar contenido previo
+
+    carrito.forEach((producto, index) => {
+      contenedor.innerHTML += `
+        <div class="card mb-2">
+          <div class="card-body d-flex justify-content-between align-items-center">
+            <div>
+              <h5 class="card-title mb-1">${producto.nombre}</h5>
+              <p class="card-text mb-0 text-muted">$${producto.precio}</p>
+            </div>
+            <button class="btn btn-outline-danger btn-sm" onclick="eliminarProducto(${index})">🗑 Eliminar</button>
+          </div>
+        </div>`;
       suma += producto.precio;
     });
 
@@ -35,6 +45,7 @@ function mostrarCarrito() {
     }
   }
 }
+
 
 // Vaciar el carrito
 function vaciarCarrito() {
