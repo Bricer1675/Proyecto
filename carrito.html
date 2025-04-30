@@ -53,37 +53,49 @@
   <script src="assets/js/custom.js"></script>
 
   <script>
-    // Mostrar los productos del carrito
+    // Mostrar los productos del carrito con botón de eliminar
     function mostrarCarrito() {
       const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
       const contenedor = document.getElementById("lista-productos");
       const totalTexto = document.getElementById("total-carrito");
       const contenedorTotal = document.getElementById("contenedor-total");
-
+  
       contenedor.innerHTML = "";
-
+  
       if (carrito.length === 0) {
         contenedor.innerHTML = "<p class='text-center text-muted'>Tu carrito está vacío 🛒</p>";
         contenedorTotal.style.display = "none";
         return;
       }
-
+  
       let suma = 0;
-      carrito.forEach(producto => {
-        contenedor.innerHTML += `<p>${producto.nombre} - $${producto.precio}</p>`;
+      carrito.forEach((producto, index) => {
+        contenedor.innerHTML += `
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span>${producto.nombre} - $${producto.precio}</span>
+            <button class="btn btn-sm btn-outline-danger" onclick="eliminarProducto(${index})">🗑</button>
+          </div>`;
         suma += producto.precio;
       });
-
+  
       totalTexto.textContent = `$${suma}`;
       contenedorTotal.style.display = "flex";
     }
-
-    // Vaciar el carrito
+  
+    // Eliminar producto individual
+    function eliminarProducto(index) {
+      let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      carrito.splice(index, 1); // Elimina el producto en la posición indicada
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+      mostrarCarrito(); // Refresca la lista
+    }
+  
+    // Vaciar todo el carrito
     function vaciarCarrito() {
       localStorage.removeItem("carrito");
       mostrarCarrito();
     }
-
+  
     // Al cargar la página
     document.addEventListener("DOMContentLoaded", mostrarCarrito);
   </script>
