@@ -35,11 +35,10 @@
       <!-- Aquí se cargarán los productos con JavaScript -->
     </div>
 
-    <div class="d-flex justify-content-between align-items-center">
+    <div id="contenedor-total" class="d-flex justify-content-between align-items-center" style="display: none;">
       <p class="h5"><strong>Total:</strong> <span id="total-carrito">$0</span></p>
       <button class="btn btn-danger" onclick="vaciarCarrito()">Vaciar Carrito</button>
     </div>
-
   </main>
 
   <!-- 📍 Footer -->
@@ -52,6 +51,55 @@
   <!-- Scripts -->
   <script src="assets/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/custom.js"></script>
+
+  <script>
+    <script>
+  // Mostrar los productos del carrito con botón de eliminar
+  function mostrarCarrito() {
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    const contenedor = document.getElementById("lista-productos");
+    const totalTexto = document.getElementById("total-carrito");
+    const contenedorTotal = document.getElementById("contenedor-total");
+
+    contenedor.innerHTML = "";
+
+    if (carrito.length === 0) {
+      contenedor.innerHTML = "<p class='text-center text-muted'>Tu carrito está vacío 🛒</p>";
+      contenedorTotal.style.display = "none";
+      return;
+    }
+
+    let suma = 0;
+    carrito.forEach((producto, index) => {
+      contenedor.innerHTML += `
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span>${producto.nombre} - $${producto.precio}</span>
+          <button class="btn btn-sm btn-outline-danger" onclick="eliminarProducto(${index})">🗑</button>
+        </div>`;
+      suma += producto.precio;
+    });
+
+    totalTexto.textContent = `$${suma}`;
+    contenedorTotal.style.display = "flex";
+  }
+
+  // Eliminar producto individual
+  function eliminarProducto(index) {
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    carrito.splice(index, 1); // Elimina el producto en la posición indicada
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    mostrarCarrito(); // Refresca la lista
+  }
+
+  // Vaciar todo el carrito
+  function vaciarCarrito() {
+    localStorage.removeItem("carrito");
+    mostrarCarrito();
+  }
+
+  // Al cargar la página
+  document.addEventListener("DOMContentLoaded", mostrarCarrito);
+</script>
 </body>
 </html>
 
